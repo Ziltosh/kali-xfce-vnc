@@ -53,7 +53,7 @@ else
     $wine_executable reg add "HKEY_CURRENT_USER\\Software\\Wine" /v Version /t REG_SZ /d "win10" /f 2>/dev/null || true
 
     # Download MT5 installer and tester
-    curl -o "$WINEPREFIX/drive_c/mt5setup.exe" "$mt5setup_url"
+    # curl -o "$WINEPREFIX/drive_c/mt5setup.exe" "$mt5setup_url"
     curl -o "$WINEPREFIX/drive_c/mt5tester.setup.exe" "$mt5tester_url"
 
     # Run MT5 installer

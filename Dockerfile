@@ -1,7 +1,7 @@
 FROM kalilinux/kali-rolling
 
 ENV TITLE=Metatrader5
-ENV WINEPREFIX="/home/user/.wine"
+ENV WINEPREFIX="/root/.wine"
 ENV WINEDEBUG=-all
 
 # 1. Installer environnement graphique, VNC, Firefox, Ping, etc.
