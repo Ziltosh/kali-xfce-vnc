@@ -40,14 +40,13 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # 5. Copier le script de MT5
-COPY mt5.sh /home/user/mt5.sh
-RUN chmod +x /home/user/mt5.sh
-RUN chown user:user /home/user/mt5.sh
+COPY mt5.sh /root/mt5.sh
+RUN chmod +x /root/mt5.sh
 
-RUN su - user -c "cd /home/user && ./mt5.sh"
+RUN /root/mt5.sh
 
 # 5. Exposer ports VNC et noVNC
-EXPOSE 5900 8080
+EXPOSE 8080
 
 # 6. Commande de démarrage
 CMD ["/entrypoint.sh"]
