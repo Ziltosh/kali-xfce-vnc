@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Configuration variables
-mt5file='/home/user/.wine/drive_c/Program Files/MetaTrader 5/terminal64.exe'
-WINEPREFIX='/home/user/.wine'
+mt5file='/root/.wine/drive_c/Program Files/MetaTrader 5/terminal64.exe'
+WINEPREFIX='/root/.wine'
 WINEDEBUG='-all'
 wine_executable="wine"
 mono_url="https://dl.winehq.org/wine/wine-mono/10.3.0/wine-mono-10.3.0-x86.msi"
@@ -57,21 +57,21 @@ else
     curl -o "$WINEPREFIX/drive_c/mt5tester.setup.exe" "$mt5tester_url"
 
     # Run MT5 installer
-    $wine_executable "$WINEPREFIX/drive_c/mt5setup.exe" "/auto" 2>/dev/null || true
+    # $wine_executable "$WINEPREFIX/drive_c/mt5setup.exe" "/auto" 2>/dev/null || true
 
     # Wait for installation to complete
-    sleep 30
+    # sleep 30
 
     # Run MT5 Tester installer
-    show_message "[4/5] Installing MT5 Tester..."
-    $wine_executable "$WINEPREFIX/drive_c/mt5tester.setup.exe" "/auto" 2>/dev/null || true
+    # show_message "[4/5] Installing MT5 Tester..."
+    # $wine_executable "$WINEPREFIX/drive_c/mt5tester.setup.exe" "/auto" 2>/dev/null || true
 
     # Wait for tester installation to complete
     sleep 30
 
     # Clean up installers
-    rm -f "$WINEPREFIX/drive_c/mt5setup.exe"
-    rm -f "$WINEPREFIX/drive_c/mt5tester.setup.exe"
+    # rm -f "$WINEPREFIX/drive_c/mt5setup.exe"
+    # rm -f "$WINEPREFIX/drive_c/mt5tester.setup.exe"
 fi
 
 # Launch MetaTrader 5
