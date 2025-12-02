@@ -1,11 +1,16 @@
 FROM kalilinux/kali-rolling
 
+ENV TITLE=Metatrader5
+ENV WINEPREFIX="/home/user/.wine"
+ENV WINEDEBUG=-all
+
 # 1. Installer environnement graphique, VNC, Firefox, Ping, etc.
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
     xfce4 xfce4-goodies \
     curl \
     wget \
+    gedit \
     nano \
     x11vnc \
     novnc \
@@ -16,18 +21,33 @@ RUN apt-get update && \
     dbus-x11 \
     firefox-esr \
     iputils-ping \
+    && wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key \
+    && wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources \
+    && dpkg --add-architecture i386 \
+    && apt-get update \
+    && apt-get install --install-recommends -y winehq-stable \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # 2. Créer utilisateur non-root (user:user)
 RUN useradd -m user && echo "user:user" | chpasswd && adduser user sudo && \
     mkdir -p /home/user/.vnc && chown -R user:user /home/user
 
-# 3. Copier le script d'entrée
+# 3. Créer un index.html pour noVNC
+RUN ln -s /usr/share/novnc/vnc.html /usr/share/novnc/index.html
+
+# 4. Copier le script d'entrée
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-# 4. Exposer ports VNC et noVNC
+# 5. Copier le script de MT5
+COPY mt5.sh /mt5.sh
+RUN chmod +x /mt5.sh
+RUN chown user:user /mt5.sh
+
+RUN su - user -c "cd /home/user && ./mt5.sh"
+
+# 5. Exposer ports VNC et noVNC
 EXPOSE 5900 8080
 
-# 5. Commande de démarrage
+# 6. Commande de démarrage
 CMD ["/entrypoint.sh"]
