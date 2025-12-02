@@ -16,7 +16,7 @@ RUN apt-get update && \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # 2. Créer utilisateur non-root (user:user)
-RUN useradd -m user && echo "user:user" | chpasswd && \
+RUN useradd -m user && echo "user:user" | chpasswd && adduser user sudo && \
     mkdir -p /home/user/.vnc && chown -R user:user /home/user
 
 # 3. Copier le script d'entrée
