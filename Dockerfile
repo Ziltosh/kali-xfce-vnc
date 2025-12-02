@@ -24,7 +24,7 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # 4. Exposer ports VNC et noVNC
-# EXPOSE 5900 8080
+EXPOSE 5900 8080
 
 # 5. Commande de démarrage
 CMD ["/entrypoint.sh"]
