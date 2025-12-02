@@ -1,7 +1,7 @@
 services:
     kali:
         build:
-            context: ./kali
+            context: ./
         container_name: kali-linux
         ports:
             - '8080:8080'
