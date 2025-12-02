@@ -1,0 +1,9 @@
+services:
+    kali:
+        build:
+            context: ./kali
+        container_name: kali-linux
+        ports:
+            - '8080:8080'
+            - '5900:5900'
+        restart: unless-stopped
