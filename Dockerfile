@@ -46,7 +46,7 @@ RUN chmod +x /root/mt5.sh
 RUN /root/mt5.sh
 
 # 5. Exposer ports VNC et noVNC
-EXPOSE 8080
+EXPOSE 8080 2000 2001 2002 2003 2004 2005
 
 # 6. Commande de démarrage
 CMD ["/entrypoint.sh"]
