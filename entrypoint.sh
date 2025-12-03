@@ -7,13 +7,12 @@ exec > >(tee /var/log/entrypoint.log) 2>&1
 # Mot de passe VNC (configurable via variable d'environnement)
 VNC_PASSWORD="${VNC_PASSWORD:-changeme}"
 
-# Wine : utiliser FSYNC au lieu de ESYNC pour éviter les crashs de synchronisation
+# Wine : configuration 64-bit obligatoire pour MetaTester
+export WINEARCH=win64
+export WINEPREFIX="/root/.wine"
 export WINEFSYNC=1
 export WINEESYNC=0
 export WINEDEBUG=err+all,fixme-all
-export WINEDLLOVERRIDES="mscoree=n;mshtml=n"
-export WINE_LARGE_ADDRESS_AWARE=1
-export WINE_CPU_TOPOLOGY=1:0
 
 # 1) Démarrer Xvfb sur DISPLAY :0
 export DISPLAY=:0

@@ -3,14 +3,16 @@
 # Configuration variables
 mt5file='/root/.wine/drive_c/Program Files/MetaTrader 5/terminal64.exe'
 WINEPREFIX='/root/.wine'
+WINEARCH='win64'
 WINEDEBUG='-all'
-wine_executable="wine"
+wine_executable="wine64"
 mono_url="https://dl.winehq.org/wine/wine-mono/10.3.0/wine-mono-10.3.0-x86.msi"
 mt5setup_url="https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe"
 mt5tester_url="https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5tester.setup.exe"
 
 # Export Wine environment variables
 export WINEPREFIX
+export WINEARCH
 export WINEDEBUG
 export XDG_RUNTIME_DIR="/tmp/runtime-root"
 export DISPLAY=":0"

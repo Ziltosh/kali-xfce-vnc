@@ -1,6 +1,7 @@
 #!/bin/sh
 
 export WINEPREFIX="/root/.wine"
+export WINEARCH="win64"
 
 # Forcer Windows 10 avant installation
 wine reg add "HKEY_CURRENT_USER\\Software\\Wine" /v Version /t REG_SZ /d "win10" /f 2>/dev/null || true
