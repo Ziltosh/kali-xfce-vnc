@@ -26,7 +26,6 @@ mkdir -p "$XDG_RUNTIME_DIR"
 mkdir -p "$WINEPREFIX/drive_c"
 # Initialize Wine prefix silently (creates necessary structure)
 $wine_executable wineboot --init 2>/dev/null || true
-sleep 5
 
 # Install Mono if not present
 if [ ! -e "$WINEPREFIX/drive_c/windows/mono" ]; then
