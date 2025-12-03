@@ -39,7 +39,9 @@ RUN chmod +x /entrypoint.sh
 
 # 5. Copier le script de MT5
 COPY mt5.sh /root/mt5.sh
+COPY install.sh /root/install.sh
 RUN chmod +x /root/mt5.sh
+RUN chmod +x /root/install.sh
 
 RUN /root/mt5.sh
 
