@@ -21,11 +21,9 @@ RUN apt-get update && \
     dbus-x11 \
     firefox-esr \
     iputils-ping \
-    && wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key \
-    && wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources \
     && dpkg --add-architecture i386 \
     && apt-get update \
-    && apt-get install --install-recommends -y winehq-staging \
+    && apt-get install --install-recommends -y wine wine64 wine32 winetricks \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # 2. Créer utilisateur non-root (user:user)
