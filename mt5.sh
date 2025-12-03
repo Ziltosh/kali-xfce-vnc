@@ -67,7 +67,7 @@ else
     # $wine_executable "$WINEPREFIX/drive_c/mt5tester.setup.exe" "/auto" 2>/dev/null || true
 
     # Wait for tester installation to complete
-    sleep 30
+    # sleep 30
 
     # Clean up installers
     # rm -f "$WINEPREFIX/drive_c/mt5setup.exe"
