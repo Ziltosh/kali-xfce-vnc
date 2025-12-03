@@ -23,9 +23,9 @@ RUN apt-get update && \
     iputils-ping \
     && wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key \
     && wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources \
-    && dpkg --add-architecture i386 \
+    && dpkg --add-architecture i386 --add-architecture amd64 \
     && apt-get update \
-    && apt-get install --install-recommends -y winehq-stable \
+    && apt-get install --install-recommends -y winehq-staging \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # 2. Créer utilisateur non-root (user:user)
