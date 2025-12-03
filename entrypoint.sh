@@ -11,6 +11,9 @@ VNC_PASSWORD="${VNC_PASSWORD:-changeme}"
 export WINEFSYNC=1
 export WINEESYNC=0
 export WINEDEBUG=err+all,fixme-all
+export WINEDLLOVERRIDES="mscoree=n;mshtml=n"
+export WINE_LARGE_ADDRESS_AWARE=1
+export WINE_CPU_TOPOLOGY=1:0
 
 # 1) Démarrer Xvfb sur DISPLAY :0
 export DISPLAY=:0
